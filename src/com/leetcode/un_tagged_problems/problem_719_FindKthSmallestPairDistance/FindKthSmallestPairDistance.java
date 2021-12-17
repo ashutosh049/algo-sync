@@ -1,4 +1,4 @@
-package com.leetcode.problem_719_FindKthSmallestPairDistance;
+package com.leetcode.un_tagged_problems.problem_719_FindKthSmallestPairDistance;
 
 import com.util.Util;
 import java.util.Arrays;

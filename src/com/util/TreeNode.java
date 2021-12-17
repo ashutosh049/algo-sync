@@ -1,10 +1,13 @@
-package com.leetcode.binary_tree.problem_145_binary_tree_postorder_traversal;
+package com.util;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class TreeNode {
 
-  int val;
-  TreeNode left;
-  TreeNode right;
+  public int val;
+  public TreeNode left;
+  public TreeNode right;
 
   public TreeNode(int val) {
     this.val = val;
@@ -16,6 +19,58 @@ public class TreeNode {
     this.right = right;
   }
 
+  /**
+   * Use this utiltity method to create TreeNode from int array arguments
+   *
+   * @param nodes
+   *     Integer array
+   * @return TreeNode root
+   */
+  public static TreeNode buildFromNodes(Integer[] nodes) {
+
+    if (nodes == null || (nodes != null && nodes.length == 0)) {
+      return null;
+    }
+
+    try {
+      int i = 0;
+
+      TreeNode root = new TreeNode(nodes[i++]);
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.offer(root);
+
+      while (i < nodes.length && !queue.isEmpty()) {
+        TreeNode curr = queue.poll();
+
+        Integer leftVal = nodes[i++];
+        Integer rightVal = nodes[i++];
+
+        if (leftVal != null) {
+          curr.left = new TreeNode(leftVal);
+          queue.offer(curr.left);
+        }
+
+        if (rightVal != null) {
+          curr.right = new TreeNode(rightVal);
+          queue.offer(curr.right);
+        }
+      }
+
+      return root;
+
+    } catch (Exception e) {
+      System.err.println("Unable to create Binary Tree Not form provided input nodes");
+      throw new IllegalArgumentException("Invalid tree structure");
+    }
+
+  }
+
+  /**
+   * Use com.util.TreeNode#buildFromNodes(java.lang.Integer[])
+   *
+   * @deprecated
+   */
+  @Deprecated
   public static TreeNode constructTree(int arg[], int size) {
     Index index = new Index();
     index.postindex = size - 1;
@@ -26,7 +81,9 @@ public class TreeNode {
   private static TreeNode constructTreeUtil(
       int arg[], Index postIndex, int key, int min, int max, int size) {
     // Base case
-    if (postIndex.postindex < 0) return null;
+    if (postIndex.postindex < 0) {
+      return null;
+    }
 
     TreeNode root = null;
 
@@ -53,8 +110,10 @@ public class TreeNode {
     return root;
   }
 
-  void printInorder(TreeNode node) {
-    if (node == null) return;
+  public void printInorder(TreeNode node) {
+    if (node == null) {
+      return;
+    }
     printInorder(node.left);
     System.out.print(node.val + " ");
     printInorder(node.right);
@@ -70,5 +129,6 @@ public class TreeNode {
 }
 
 class Index {
+
   int postindex = 0;
 }

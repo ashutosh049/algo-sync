@@ -1,4 +1,4 @@
-package com.leetcode.problem_498;
+package com.leetcode.un_tagged_problems.problem_498;
 
 import java.util.ArrayList;
 import java.util.Collections;

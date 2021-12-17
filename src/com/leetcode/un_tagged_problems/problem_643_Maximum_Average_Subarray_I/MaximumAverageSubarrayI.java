@@ -1,4 +1,4 @@
-package com.leetcode.problem_643_Maximum_Average_Subarray_I;
+package com.leetcode.un_tagged_problems.problem_643_Maximum_Average_Subarray_I;
 
 /**
  * <pre>Given an array consisting of n integers, find the contiguous subarray of given length k that has the maximum average value. And you need to output the maximum average value.

@@ -1,5 +1,6 @@
-package com.leetcode.binary_tree.problem_145_binary_tree_postorder_traversal;
+package com.leetcode.binary_tree.easy.problem_145_binary_tree_postorder_traversal;
 
+import com.util.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;

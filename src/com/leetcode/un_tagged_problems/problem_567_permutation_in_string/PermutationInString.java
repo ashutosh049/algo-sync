@@ -1,4 +1,4 @@
-package com.leetcode.problem_567_permutation_in_string;
+package com.leetcode.un_tagged_problems.problem_567_permutation_in_string;
 
 import com.util.Util;
 import java.util.HashMap;

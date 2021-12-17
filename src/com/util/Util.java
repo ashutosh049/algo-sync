@@ -1,8 +1,10 @@
 package com.util;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class Util {
 
@@ -162,6 +164,14 @@ public class Util {
       Integer entryValue = entry.getValue();
       System.out.println("[" + entry.getKey() + ", " + entryValue + "]");
     }
+  }
+
+  void test() {
+
+    List<Integer> a = new ArrayList<>();
+    List<Integer> b = new LinkedList<>();
+    List<Integer> c = new Stack<>();
+
   }
 
 }
