@@ -1,5 +1,6 @@
 package com.util;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -35,32 +36,41 @@ public class TreeNode {
     try {
       int i = 0;
 
-      TreeNode root = new TreeNode(nodes[i++]);
+      TreeNode root = new TreeNode(nodes[i]);
+      i++;
       Queue<TreeNode> queue = new LinkedList<>();
       queue.offer(root);
 
-      while (i < nodes.length && !queue.isEmpty()) {
+      int len = nodes.length;
+
+      while (i < len && !queue.isEmpty()) {
         TreeNode curr = queue.poll();
 
-        Integer leftVal = nodes[i++];
-        Integer rightVal = nodes[i++];
-
-        if (leftVal != null) {
-          curr.left = new TreeNode(leftVal);
-          queue.offer(curr.left);
-        }
-
-        if (rightVal != null) {
-          curr.right = new TreeNode(rightVal);
-          queue.offer(curr.right);
+        if (curr != null) {
+          if (i < len) {
+            Integer leftVal = nodes[i];
+            if (leftVal != null) {
+              curr.left = new TreeNode(leftVal);
+              queue.offer(curr.left);
+            }
+            i++;
+          }
+          if (i < len) {
+            Integer rightVal = nodes[i];
+            if (rightVal != null) {
+              curr.right = new TreeNode(rightVal);
+              queue.offer(curr.right);
+            }
+            i++;
+          }
         }
       }
-
       return root;
-
     } catch (Exception e) {
-      System.err.println("Unable to create Binary Tree Not form provided input nodes");
-      throw new IllegalArgumentException("Invalid tree structure");
+      System.err.println(
+          "Unable to create Binary Tree Node form provided input nodes:" + Arrays.asList(nodes)
+      );
+      throw new IllegalArgumentException("Invalid tree structure ::" + Arrays.asList(nodes));
     }
 
   }
